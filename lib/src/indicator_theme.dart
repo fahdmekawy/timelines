@@ -77,7 +77,7 @@ class IndicatorThemeData with Diagnosticable {
   }
 
   @override
-  int get hashCode => hashValues(color, size, position);
+  int get hashCode => Object.hash(color, size, position);
 
   @override
   bool operator ==(Object other) {
@@ -160,6 +160,7 @@ mixin ThemedIndicatorComponent on PositionedIndicator {
   /// will default to blue.
   /// {@endtemplate}
   Color? get color;
+
   Color getEffectiveColor(BuildContext context) {
     return color ??
         IndicatorTheme.of(context).color ??
@@ -174,6 +175,7 @@ mixin ThemedIndicatorComponent on PositionedIndicator {
   /// defaults to own child size(0.0).
   /// {@endtemplate}
   double? get size;
+
   double? getEffectiveSize(BuildContext context) {
     return size ?? IndicatorTheme.of(context).size;
   }
